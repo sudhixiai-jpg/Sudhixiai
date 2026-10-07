@@ -1,9 +1,32 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Clock, User, ArrowRight, Share2 } from "lucide-react";
+import { ArrowLeft, Clock, User, ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
 import { getInsightBySlug } from "@/lib/api/insights";
 import { insights as fallbackInsights } from "@/data/content";
 import { Reveal } from "@/components/ui/Reveal";
+
+interface Props { params: { slug: string }; }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  try {
+    const a = await getInsightBySlug(params.slug);
+    return {
+      title: a.seo_title || `${a.title} | SUDHIXAI Insights`,
+      description: a.seo_description || a.excerpt || a.subtitle,
+      alternates: { canonical: `https://sudhixai.com/insights/${params.slug}` },
+      openGraph: {
+        title: a.title,
+        description: a.excerpt || a.subtitle || "",
+        type: "article",
+        publishedTime: a.published_at || undefined,
+        images: a.cover_image ? [{ url: a.cover_image }] : [],
+      },
+    };
+  } catch {
+    return { title: "Insight | SUDHIXAI" };
+  }
+}
 
 export default async function InsightDetailPage({
   params,

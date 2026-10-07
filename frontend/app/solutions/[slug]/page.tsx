@@ -1,10 +1,26 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CheckCircle, Cpu } from "lucide-react";
+import type { Metadata } from "next";
 import { getServiceBySlug } from "@/lib/api/services";
 import { services as fallbackServices } from "@/data/services";
 import { getServiceIcon } from "@/lib/icons";
 import { Reveal } from "@/components/ui/Reveal";
+
+interface Props { params: { slug: string }; }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  try {
+    const s = await getServiceBySlug(params.slug);
+    return {
+      title: s.seo_title || `${s.title} | SUDHIXAI`,
+      description: s.seo_description || s.short_description,
+      alternates: { canonical: `https://sudhixai.com/solutions/${params.slug}` },
+    };
+  } catch {
+    return { title: "Solution | SUDHIXAI" };
+  }
+}
 
 export default async function ServiceDetailPage({
   params,

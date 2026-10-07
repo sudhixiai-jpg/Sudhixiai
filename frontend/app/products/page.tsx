@@ -6,22 +6,19 @@ import { Reveal } from "@/components/ui/Reveal";
 import { products as fallbackProducts } from "@/data/content";
 import { getProducts } from "@/lib/api/products";
 import { accentText } from "@/lib/accent";
-
 export const metadata: Metadata = {
   title: "AI Software Products | SUDHIXAI",
   description:
-    "Discover SUDHIXAI's suite of AI-powered software products: SudhixFlow, SudhixCognition, and SudhixPulse. Enterprise-grade AI tools built for scale.",
+    "Explore SUDHIXAI's AI products, including our RAG chatbot that answers from your own documents.",
   keywords: [
     "AI software products India",
-    "SudhixFlow",
-    "SudhixCognition",
-    "SudhixPulse",
+    "RAG chatbot",
+    "AI chatbot for business",
     "AI products Patna Bihar",
-    "enterprise software products India",
   ],
   alternates: { canonical: "https://sudhixai.site/products" },
 };
-
+export const revalidate = 60;
 
 const statusLabelMap: Record<string, string> = {
   BETA: "Beta Available",
@@ -40,7 +37,7 @@ const statusAccentMap: Record<string, "primary" | "secondary" | "tertiary" | "mu
 };
 
 export default async function ProductsPage() {
-  let displayProducts = fallbackProducts;
+  let displayProducts: typeof fallbackProducts = [];
   try {
     const remote = await getProducts();
     if (remote && remote.length > 0) {
@@ -54,7 +51,7 @@ export default async function ProductsPage() {
       }));
     }
   } catch {
-    // Graceful fallback
+    // API unreachable: show the empty state below
   }
 
   return (
@@ -65,7 +62,9 @@ export default async function ProductsPage() {
           title="Proprietary Technology Platforms"
           description="Engineered in-house to solve mission-critical challenges in workflow orchestration, neural knowledge retrieval, and real-time organic telemetry."
         />
-
+          {displayProducts.length === 0 && (
+            <p className="text-on-surface-variant">Products are being updated. Please check back soon.</p>
+          )}
         <div className="grid grid-cols-1 gap-space-lg md:grid-cols-3">
           {displayProducts.map((product, i) => (
             <Reveal
