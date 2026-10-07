@@ -1,3 +1,4 @@
 -r base.txt
 gunicorn>=22.0
+whitenoise[brotli]>=6.7
 sentry-sdk>=2.10
