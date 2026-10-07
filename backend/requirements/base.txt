@@ -10,3 +10,4 @@ celery>=5.4
 Pillow>=10.4
 argon2-cffi>=23.1
 django-storages[boto3]>=1.14
+django-unfold>=0.40
