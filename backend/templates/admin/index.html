@@ -1,0 +1,65 @@
+{% extends "admin/index.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="mb-8">
+  <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+    Welcome back 👋
+  </h2>
+  <p class="text-sm text-gray-500 dark:text-gray-400">
+    Here's what's happening across SUDHIXAI today.
+  </p>
+</div>
+
+{% if kpi %}
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+  {% for card in kpi %}
+  <a href="{{ card.url }}"
+     class="group relative flex flex-col gap-3 overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md dark:border-gray-700 dark:bg-gray-900">
+
+    {# Subtle top gradient strip #}
+    <div class="absolute inset-x-0 top-0 h-0.5
+      {% if card.color == 'cyan' %}bg-gradient-to-r from-cyan-400 to-sky-500
+      {% elif card.color == 'blue' %}bg-gradient-to-r from-blue-400 to-indigo-500
+      {% elif card.color == 'violet' %}bg-gradient-to-r from-violet-400 to-purple-500
+      {% elif card.color == 'green' %}bg-gradient-to-r from-emerald-400 to-teal-500
+      {% elif card.color == 'orange' %}bg-gradient-to-r from-orange-400 to-amber-500
+      {% else %}bg-gradient-to-r from-pink-400 to-rose-500
+      {% endif %}
+      opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+    </div>
+
+    {# Icon + title row #}
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
+        {{ card.title }}
+      </span>
+      <span class="material-symbols-outlined text-xl
+        {% if card.color == 'cyan' %}text-cyan-500
+        {% elif card.color == 'blue' %}text-blue-500
+        {% elif card.color == 'violet' %}text-violet-500
+        {% elif card.color == 'green' %}text-emerald-500
+        {% elif card.color == 'orange' %}text-orange-500
+        {% else %}text-pink-500
+        {% endif %}">
+        {{ card.icon }}
+      </span>
+    </div>
+
+    {# Big metric #}
+    <div class="text-3xl font-bold text-gray-900 dark:text-gray-100 tabular-nums">
+      {{ card.metric }}
+    </div>
+
+    {# Footer note #}
+    <div class="text-xs text-gray-400 dark:text-gray-500">
+      {{ card.footer }}
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+
+{# Original app list below cards #}
+{{ block.super }}
+{% endblock %}
