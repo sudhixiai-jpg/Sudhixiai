@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "web development Patna",
     "digital marketing Patna Bihar",
   ],
-  alternates: { canonical: "https://sudhixai.com/solutions" },
+  alternates: { canonical: "https://sudhixai.site/solutions" },
 };
 
 

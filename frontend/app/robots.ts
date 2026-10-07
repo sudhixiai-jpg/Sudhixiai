@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin/", "/api/", "/_next/", "/static/"],
       },
     ],
-    sitemap: "https://sudhixai.com/sitemap.xml",
-    host: "https://sudhixai.com",
+    sitemap: "https://sudhixai.site/sitemap.xml",
+    host: "https://sudhixai.site",
   };
 }

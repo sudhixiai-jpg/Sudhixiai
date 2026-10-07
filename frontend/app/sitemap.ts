@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://sudhixai.com";
+const BASE_URL = "https://sudhixai.site";
 
 // Static pages with their SEO priority
 const staticPages: MetadataRoute.Sitemap = [

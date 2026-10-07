@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "software solutions India",
     "artificial intelligence company Bihar",
   ],
-  alternates: { canonical: "https://sudhixai.com" },
+  alternates: { canonical: "https://sudhixai.site" },
 };
 
 

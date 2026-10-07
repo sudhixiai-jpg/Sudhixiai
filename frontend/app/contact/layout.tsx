@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "get quote software development Bihar",
     "IT company contact Patna",
   ],
-  alternates: { canonical: "https://sudhixai.com/contact" },
+  alternates: { canonical: "https://sudhixai.site/contact" },
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {

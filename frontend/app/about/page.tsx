@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "software development team Patna",
     "IT company Patna",
   ],
-  alternates: { canonical: "https://sudhixai.com/about" },
+  alternates: { canonical: "https://sudhixai.site/about" },
 };
 
 

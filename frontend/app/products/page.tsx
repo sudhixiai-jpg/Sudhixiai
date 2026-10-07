@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "AI products Patna Bihar",
     "enterprise software products India",
   ],
-  alternates: { canonical: "https://sudhixai.com/products" },
+  alternates: { canonical: "https://sudhixai.site/products" },
 };
 
 

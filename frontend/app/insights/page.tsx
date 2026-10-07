@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "digital transformation Bihar",
     "tech articles Patna",
   ],
-  alternates: { canonical: "https://sudhixai.com/insights" },
+  alternates: { canonical: "https://sudhixai.site/insights" },
 };
 
 

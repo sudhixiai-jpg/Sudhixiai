@@ -8,7 +8,7 @@ export const siteConfig = {
   tagline: "Enterprise AI & Custom Software Engineering",
   description:
     "SUDHIXAI delivers next-generation AI solutions, autonomous workflows, and custom software engineering for scaling businesses worldwide. Proudly developed in India.",
-  url: "https://sudhixai.com",
+  url: "https://sudhixai.site",
   location: {
     city: "Patna",
     state: "Bihar",
